@@ -21,28 +21,26 @@
 
   <meta name="theme-color" content="#fafafa">
   
-  <style>
-	* {margin:auto;}
-	body {font-family:sans-serif; margin-top:130px;}
-	
-	#header {position:fixed; left:0px; top:0px; background:#e5892d; height:130px; width:100%; text-align:center; box-shadow: 0 3px 5px 0 #888;}
-	#audioplayer {border-radius: 16px; opacity:0.8; -webkit-border-radius: 40px; margin-bottom:8px}
-	
-	iframe {border:0; background:powderblue; display:block; height:40vh; width:100%;}
-	
-	h2 {text-align:center; background:dodgerblue; color:powderblue; border-radius: 16px; padding:0.3em 0; cursor:pointer}
-	
-	table {border-collapse: collapse; margin-top:10px}
-	tbody tr:nth-child(odd) {background-color: #eee; color: #000;}
-	td { padding:5px}
-	.month {padding-bottom:5em;text-align:left}
-	.date {color:midnightblue; font-weight:bold; width:80px; text-align:center}
-	
-	a,span {color:dodgerblue; font-weight:bold; text-decoration:underline; cursor:pointer}
-	
-	#footer {display: flex; position:fixed; left:0px; bottom:0px; height:3em; width:100%; background:#333; font-size:0.8em; align-items:center; box-shadow: inset 0 5px 5px 0 #222;}
-	
+	<style>
+		* {margin:auto;}
+		body {font-family:sans-serif; margin-top:130px;}
 
+		#header {position:fixed; left:0px; top:0px; background:#e5a21b; height:130px; width:100%; text-align:center; box-shadow: 0 3px 5px 0 #888;}
+		#audioplayer {border-radius: 16px; opacity:0.8; -webkit-border-radius: 40px; margin-bottom:8px}
+
+		iframe {border:0; background:powderblue; display:block; height:40vh; width:100%;}
+
+		h2 {text-align:center; background:dodgerblue; color:powderblue; border-radius: 16px; padding:0.3em 0; cursor:pointer}
+
+		table {border-collapse: collapse; margin-top:10px}
+		tbody tr:nth-child(odd) {background-color: #eee; color: #000;}
+		td { padding:5px}
+		.month {padding-bottom:5em;text-align:left}
+		.date {color:midnightblue; font-weight:bold; width:80px; text-align:center}
+
+		a,span {color:dodgerblue; font-weight:bold; text-decoration:underline; cursor:pointer}
+
+		#footer {display: flex; position:fixed; left:0px; bottom:0px; height:3em; width:100%; background:#333; font-size:0.8em; align-items:center; box-shadow: inset 0 5px 5px 0 #222;}
 	</style>
 	<style>
 	@media all and (min-width: 1441px){
@@ -68,16 +66,18 @@
 	}
 
 	@media all and (min-width: 480px) and (max-width: 768px) {
-		body,p {Font-Size: 13px; Line-Height: 21px; }
-		h1 {Font-Size: 2em}
-		#audioplayer {transform: scale(1); width:60%;}
+		body {Font-Size: 13px; Line-Height: 21px; margin-top:90px}
+		#header {height:90px}
+		h1 {Font-Size: 2em; float:left; margin-left:2em; margin-top:1.5em}
+		#audioplayer {transform: scale(1); width:60%; margin-top:1em}
+		iframe {heigth:30vh}
 		a {Font-Size: 1em; Line-Height: 1.4em; max-width:415px; margin:auto}
-		h2 {width:50%;}
+		h2 {width:70%;}
 	}
 
 	@media all and (max-width: 480px) {
 		body,p {Font-Size: 13px; Line-Height: 21px;}
-		h1 {Font-Size: 2em}
+		h1 {Font-Size: 2em; line-height:0.6em}
 		#audioplayer {transform: scale(1); width:90%;}
 		a {Font-Size: 0.9em; Line-Height: 1.1em; margin:auto}
 		h2 {width:90%;}
@@ -87,10 +87,12 @@
 
 <body>
 	
+	<div style="background:powderblue; position:absolute; top:10px; right:20px; height:20px; width:20px; z-index:10; box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);" onclick="toggleiframe()"></div>
+	
   <!-- Add your site or application content here -->
 
 	<div id="header">
-		<h1 id="mp3_title" onclick="showBible()">Psa 150</h1>
+		<h1 id="mp3_title" onclick="showBible()" style="text-shadow:1px 1px 3px black; color:white">Psa 150</h1>
 		
 		<audio id="audioplayer" controls>
 			<source id="mp3_src" src="https://stream.biblegateway.com/bibles/32/niv-dramatized/Ps.150.ea7fee77d12c5a6a7d5171e07b2f3579.mp3" type="audio/mp3">
@@ -120,7 +122,7 @@
 			
 			var w=window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
 			var h=window.innerHeight || document.documentElement.clientHeight ||document.body.clientHeight;
-			document.write('<div style="background:yellow; position:absolute; top:0; left:0"; z-index:10>' + w + ' by ' + h + '</div>');
+			document.write('<div style="display:none; background:yellow; position:absolute; top:0; left:0">' + w + ' by ' + h + '</div>');
 		</script>
 	</div>
   
@@ -174,112 +176,112 @@
 				<td class="date">14 Jun</td>
 				<td>
 					Psa 134, Psa 146, Psa 147, Psa 148, Psa 149
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Ps.150.ea7fee77d12c5a6a7d5171e07b2f3579.mp3';document.getElementById('mp3_title').innerHTML='Psa 150';document.getElementById('audioplayer').load();">Psa 150</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Ps.150.ea7fee77d12c5a6a7d5171e07b2f3579.mp3';document.getElementById('mp3_title').innerHTML='Psa 150';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Psa%20150&formatting=full';">Psa 150</a>
 				</td></tr>
 			<tr>
 				<td class="date">15 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.9.453841799cce9b2955e93acd92357ee7.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 9';document.getElementById('audioplayer').load();">1Kgs 9</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.8.64120080ba0e70ac9d30797f77283007.mp3';document.getElementById('mp3_title').innerHTML='2Chr 8';document.getElementById('audioplayer').load();">2Chr 8</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.9.453841799cce9b2955e93acd92357ee7.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 9';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%209&formatting=full';">1Kgs 9</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.8.64120080ba0e70ac9d30797f77283007.mp3';document.getElementById('mp3_title').innerHTML='2Chr 8';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%208&formatting=full';">2Chr 8</a>
 				</td></tr>
 			<tr>
 				<td class="date">16 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.25.26b13768f83b681418fe6867f83a8d53.mp3';document.getElementById('mp3_title').innerHTML='Prov 25';document.getElementById('audioplayer').load();">Prov 25</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.26.ebdab217d7ebf9f8d45e6ac5ba1e675d.mp3';document.getElementById('mp3_title').innerHTML='Prov 26';document.getElementById('audioplayer').load();">Prov 26</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.25.26b13768f83b681418fe6867f83a8d53.mp3';document.getElementById('mp3_title').innerHTML='Prov 25';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2025&formatting=full';">Prov 25</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.26.ebdab217d7ebf9f8d45e6ac5ba1e675d.mp3';document.getElementById('mp3_title').innerHTML='Prov 26';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2026&formatting=full';">Prov 26</a>
 				</td></tr>
 			<tr>
 				<td class="date">17 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.27.3d5138467f111a5b10c9e03d0da3f0cd.mp3';document.getElementById('mp3_title').innerHTML='Prov 27';document.getElementById('audioplayer').load();">Prov 27</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.28.d52c0b4a4e8441d23ec9efabd2d31b4f.mp3';document.getElementById('mp3_title').innerHTML='Prov 28';document.getElementById('audioplayer').load();">Prov 28</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.29.53b43e3a6e7ec3716777c61bfb76dbff.mp3';document.getElementById('mp3_title').innerHTML='Prov 29';document.getElementById('audioplayer').load();">Prov 29</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.27.3d5138467f111a5b10c9e03d0da3f0cd.mp3';document.getElementById('mp3_title').innerHTML='Prov 27';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2027&formatting=full';">Prov 27</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.28.d52c0b4a4e8441d23ec9efabd2d31b4f.mp3';document.getElementById('mp3_title').innerHTML='Prov 28';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2028&formatting=full';">Prov 28</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.29.53b43e3a6e7ec3716777c61bfb76dbff.mp3';document.getElementById('mp3_title').innerHTML='Prov 29';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2029&formatting=full';">Prov 29</a>
 				</td></tr>
 			<tr>
 				<td class="date">18 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.1.fb9d318faa733c9e9e74d3efe34260b6.mp3';document.getElementById('mp3_title').innerHTML='Eccl 1';document.getElementById('audioplayer').load();">Eccl 1</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.2.db6e1e6eb97a08655a8064c91dad8da3.mp3';document.getElementById('mp3_title').innerHTML='Eccl 2';document.getElementById('audioplayer').load();">Eccl 2</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.3.4674aadf0ba84477e29434dd4c8a99ec.mp3';document.getElementById('mp3_title').innerHTML='Eccl 3';document.getElementById('audioplayer').load();">Eccl 3</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.4.18e278d1090be71081dbbd4035ce64c1.mp3';document.getElementById('mp3_title').innerHTML='Eccl 4';document.getElementById('audioplayer').load();">Eccl 4</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.5.7bfc0f339adce17e5aeb98c291b6b0ad.mp3';document.getElementById('mp3_title').innerHTML='Eccl 5';document.getElementById('audioplayer').load();">Eccl 5</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.6.def56f2cb4521f605a71a02f4e59f400.mp3';document.getElementById('mp3_title').innerHTML='Eccl 6';document.getElementById('audioplayer').load();">Eccl 6</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.1.fb9d318faa733c9e9e74d3efe34260b6.mp3';document.getElementById('mp3_title').innerHTML='Eccl 1';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%201&formatting=full';">Eccl 1</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.2.db6e1e6eb97a08655a8064c91dad8da3.mp3';document.getElementById('mp3_title').innerHTML='Eccl 2';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%202&formatting=full';">Eccl 2</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.3.4674aadf0ba84477e29434dd4c8a99ec.mp3';document.getElementById('mp3_title').innerHTML='Eccl 3';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%203&formatting=full';">Eccl 3</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.4.18e278d1090be71081dbbd4035ce64c1.mp3';document.getElementById('mp3_title').innerHTML='Eccl 4';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%204&formatting=full';">Eccl 4</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.5.7bfc0f339adce17e5aeb98c291b6b0ad.mp3';document.getElementById('mp3_title').innerHTML='Eccl 5';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%205&formatting=full';">Eccl 5</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.6.def56f2cb4521f605a71a02f4e59f400.mp3';document.getElementById('mp3_title').innerHTML='Eccl 6';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%206&formatting=full';">Eccl 6</a>
 				</td></tr>
 			<tr>
 				<td class="date">19 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.7.90c409e59d5889b5c4ef5cc0ea5d58dc.mp3';document.getElementById('mp3_title').innerHTML='Eccl 7';document.getElementById('audioplayer').load();">Eccl 7</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.8.0037dcb8ca738ab866101b576b2f5561.mp3';document.getElementById('mp3_title').innerHTML='Eccl 8';document.getElementById('audioplayer').load();">Eccl 8</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.9.562f41f489dfbab2d62d55493a2b86ae.mp3';document.getElementById('mp3_title').innerHTML='Eccl 9';document.getElementById('audioplayer').load();">Eccl 9</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.10.6ab55445b2bac7619d3f97f0f3743b72.mp3';document.getElementById('mp3_title').innerHTML='Eccl 10';document.getElementById('audioplayer').load();">Eccl 10</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.11.b25c3ef5073400d0f342ef7f75ac06d2.mp3';document.getElementById('mp3_title').innerHTML='Eccl 11';document.getElementById('audioplayer').load();">Eccl 11</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.12.a9f2e5ecb6b6faeb5ea6dd79b69be48e.mp3';document.getElementById('mp3_title').innerHTML='Eccl 12';document.getElementById('audioplayer').load();">Eccl 12</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.7.90c409e59d5889b5c4ef5cc0ea5d58dc.mp3';document.getElementById('mp3_title').innerHTML='Eccl 7';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%207&formatting=full';">Eccl 7</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.8.0037dcb8ca738ab866101b576b2f5561.mp3';document.getElementById('mp3_title').innerHTML='Eccl 8';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%208&formatting=full';">Eccl 8</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.9.562f41f489dfbab2d62d55493a2b86ae.mp3';document.getElementById('mp3_title').innerHTML='Eccl 9';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%209&formatting=full';">Eccl 9</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.10.6ab55445b2bac7619d3f97f0f3743b72.mp3';document.getElementById('mp3_title').innerHTML='Eccl 10';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%2010&formatting=full';">Eccl 10</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.11.b25c3ef5073400d0f342ef7f75ac06d2.mp3';document.getElementById('mp3_title').innerHTML='Eccl 11';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%2011&formatting=full';">Eccl 11</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Eccl.12.a9f2e5ecb6b6faeb5ea6dd79b69be48e.mp3';document.getElementById('mp3_title').innerHTML='Eccl 12';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Eccl%2012&formatting=full';">Eccl 12</a>
 				</td></tr>
 			<tr>
 				<td class="date">20 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.10.b3bda99ac648b3e1a7c6999d1d8969f2.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 10';document.getElementById('audioplayer').load();">1Kgs 10</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.11.ef85c6f5821505b52c2eda080c312929.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 11';document.getElementById('audioplayer').load();">1Kgs 11</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.9.bb83e28a45b921720118b43c17e5133d.mp3';document.getElementById('mp3_title').innerHTML='2Chr 9';document.getElementById('audioplayer').load();">2Chr 9</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.10.b3bda99ac648b3e1a7c6999d1d8969f2.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 10';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2010&formatting=full';">1Kgs 10</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.11.ef85c6f5821505b52c2eda080c312929.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 11';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2011&formatting=full';">1Kgs 11</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.9.bb83e28a45b921720118b43c17e5133d.mp3';document.getElementById('mp3_title').innerHTML='2Chr 9';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%209&formatting=full';">2Chr 9</a>
 				</td></tr>
 			<tr>
 				<td class="date">21 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.30.91c5e8e156fbcdc35597172109f24c54.mp3';document.getElementById('mp3_title').innerHTML='Prov 30';document.getElementById('audioplayer').load();">Prov 30</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.31.b79f38dedea08bf18f649c9b52a3dba2.mp3';document.getElementById('mp3_title').innerHTML='Prov 31';document.getElementById('audioplayer').load();">Prov 31</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.30.91c5e8e156fbcdc35597172109f24c54.mp3';document.getElementById('mp3_title').innerHTML='Prov 30';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2030&formatting=full';">Prov 30</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/Prov.31.b79f38dedea08bf18f649c9b52a3dba2.mp3';document.getElementById('mp3_title').innerHTML='Prov 31';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=Prov%2031&formatting=full';">Prov 31</a>
 				</td></tr>
 			<tr>
 				<td class="date">22 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.12.e067b1787cbdc47b99a0bd7e789f20cb.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 12';document.getElementById('audioplayer').load();">1Kgs 12</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.13.23bcca81a5f2863ad0a0baaeb6097834.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 13';document.getElementById('audioplayer').load();">1Kgs 13</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.14.ef1a6e8af3570efdb48fc5fe517f67de.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 14';document.getElementById('audioplayer').load();">1Kgs 14</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.12.e067b1787cbdc47b99a0bd7e789f20cb.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 12';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2012&formatting=full';">1Kgs 12</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.13.23bcca81a5f2863ad0a0baaeb6097834.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 13';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2013&formatting=full';">1Kgs 13</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.14.ef1a6e8af3570efdb48fc5fe517f67de.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 14';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2014&formatting=full';">1Kgs 14</a>
 				</td></tr>
 			<tr>
 				<td class="date">23 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.10.f768547c3a3c587d63ea11de70720216.mp3';document.getElementById('mp3_title').innerHTML='2Chr 10';document.getElementById('audioplayer').load();">2Chr 10</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.11.aa09bbfd6d2af1cc417b442bbcb1771d.mp3';document.getElementById('mp3_title').innerHTML='2Chr 11';document.getElementById('audioplayer').load();">2Chr 11</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.12.795d8ec3505246b1bf46fa0d0f45cff4.mp3';document.getElementById('mp3_title').innerHTML='2Chr 12';document.getElementById('audioplayer').load();">2Chr 12</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.10.f768547c3a3c587d63ea11de70720216.mp3';document.getElementById('mp3_title').innerHTML='2Chr 10';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2010&formatting=full';">2Chr 10</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.11.aa09bbfd6d2af1cc417b442bbcb1771d.mp3';document.getElementById('mp3_title').innerHTML='2Chr 11';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2011&formatting=full';">2Chr 11</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.12.795d8ec3505246b1bf46fa0d0f45cff4.mp3';document.getElementById('mp3_title').innerHTML='2Chr 12';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2012&formatting=full';">2Chr 12</a>
 				</td></tr>
 			<tr>
 				<td class="date">24 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.15.85ae0f6a779659a35b9a7809d9d45fe5.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 15';document.getElementById('audioplayer').load();">1Kgs 15</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.13.498a4ddc34fba6aac9a52efc2f4ea322.mp3';document.getElementById('mp3_title').innerHTML='2Chr 13';document.getElementById('audioplayer').load();">2Chr 13</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.14.21a73531b256137899e50abdb5584bd5.mp3';document.getElementById('mp3_title').innerHTML='2Chr 14';document.getElementById('audioplayer').load();">2Chr 14</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.15.3857032de7789323209436004ce4fe43.mp3';document.getElementById('mp3_title').innerHTML='2Chr 15';document.getElementById('audioplayer').load();">2Chr 15</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.16.f7b8bd10b766b15449e2207387901ccf.mp3';document.getElementById('mp3_title').innerHTML='2Chr 16';document.getElementById('audioplayer').load();">2Chr 16</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.15.85ae0f6a779659a35b9a7809d9d45fe5.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 15';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2015&formatting=full';">1Kgs 15</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.13.498a4ddc34fba6aac9a52efc2f4ea322.mp3';document.getElementById('mp3_title').innerHTML='2Chr 13';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2013&formatting=full';">2Chr 13</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.14.21a73531b256137899e50abdb5584bd5.mp3';document.getElementById('mp3_title').innerHTML='2Chr 14';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2014&formatting=full';">2Chr 14</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.15.3857032de7789323209436004ce4fe43.mp3';document.getElementById('mp3_title').innerHTML='2Chr 15';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2015&formatting=full';">2Chr 15</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.16.f7b8bd10b766b15449e2207387901ccf.mp3';document.getElementById('mp3_title').innerHTML='2Chr 16';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2016&formatting=full';">2Chr 16</a>
 				</td></tr>
 			<tr>
 				<td class="date">25 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.16.e169645001a4fe2021330176557682ea.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 16';document.getElementById('audioplayer').load();">1Kgs 16</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.17.559388cde240639d7c3ccf9001e6b8f2.mp3';document.getElementById('mp3_title').innerHTML='2Chr 17';document.getElementById('audioplayer').load();">2Chr 17</a></td></tr>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.16.e169645001a4fe2021330176557682ea.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 16';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2016&formatting=full';">1Kgs 16</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.17.559388cde240639d7c3ccf9001e6b8f2.mp3';document.getElementById('mp3_title').innerHTML='2Chr 17';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2017&formatting=full';">2Chr 17</a></td></tr>
 			<tr>
 				<td class="date">26 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.17.3c1cbef32fe89d3797e809bc6caa3640.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 17';document.getElementById('audioplayer').load();">1Kgs 17</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.18.346e44738191f3f521771a5ed2f4bc25.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 18';document.getElementById('audioplayer').load();">1Kgs 18</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.19.aaf9734b6c063b3eea08291092f8dddb.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 19';document.getElementById('audioplayer').load();">1Kgs 19</a></td></tr>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.17.3c1cbef32fe89d3797e809bc6caa3640.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 17';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2017&formatting=full';">1Kgs 17</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.18.346e44738191f3f521771a5ed2f4bc25.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 18';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2018&formatting=full';">1Kgs 18</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.19.aaf9734b6c063b3eea08291092f8dddb.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 19';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2019&formatting=full';">1Kgs 19</a></td></tr>
 			<tr>
 				<td class="date">27 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.20.5cfeedb5c9e38639d711e7a0dd600d71.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 20';document.getElementById('audioplayer').load();">1Kgs 20</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.21.e39a195ae32153d2827f6a046fed6f37.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 21';document.getElementById('audioplayer').load();">1Kgs 21</a></td></tr>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.20.5cfeedb5c9e38639d711e7a0dd600d71.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 20';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2020&formatting=full';">1Kgs 20</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.21.e39a195ae32153d2827f6a046fed6f37.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 21';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2021&formatting=full';">1Kgs 21</a></td></tr>
 			<tr>
 				<td class="date">28 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.22.7c6d59e015e2ad3c0ceec2283202bff7.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 22';document.getElementById('audioplayer').load();">1Kgs 22</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.18.03748468500411f47dd34c25590b0463.mp3';document.getElementById('mp3_title').innerHTML='2Chr 18';document.getElementById('audioplayer').load();">2Chr 18</a></td></tr>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/1Kgs.22.7c6d59e015e2ad3c0ceec2283202bff7.mp3';document.getElementById('mp3_title').innerHTML='1Kgs 22';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=1Kgs%2022&formatting=full';">1Kgs 22</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.18.03748468500411f47dd34c25590b0463.mp3';document.getElementById('mp3_title').innerHTML='2Chr 18';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2018&formatting=full';">2Chr 18</a></td></tr>
 			<tr>
 				<td class="date">29 Jun</td>
 				<td>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.19.1b534e750226e0ca57031ffcd1585470.mp3';document.getElementById('mp3_title').innerHTML='2Chr 19';document.getElementById('audioplayer').load();">2Chr 19</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.20.c144786b95a03aae5911b138fe5172ab.mp3';document.getElementById('mp3_title').innerHTML='2Chr 20';document.getElementById('audioplayer').load();">2Chr 20</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.21.cbf44442307d608c45fa67ccefc0a001.mp3';document.getElementById('mp3_title').innerHTML='2Chr 21';document.getElementById('audioplayer').load();">2Chr 21</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.22.973dd5192839f1b7b67ca7660b97051a.mp3';document.getElementById('mp3_title').innerHTML='2Chr 22';document.getElementById('audioplayer').load();">2Chr 22</a>
-					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.23.bc1902407a874ea8cfe8026816759855.mp3';document.getElementById('mp3_title').innerHTML='2Chr 23';document.getElementById('audioplayer').load();">2Chr 23</a></td></tr>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.19.1b534e750226e0ca57031ffcd1585470.mp3';document.getElementById('mp3_title').innerHTML='2Chr 19';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2019&formatting=full';">2Chr 19</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.20.c144786b95a03aae5911b138fe5172ab.mp3';document.getElementById('mp3_title').innerHTML='2Chr 20';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2020&formatting=full';">2Chr 20</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.21.cbf44442307d608c45fa67ccefc0a001.mp3';document.getElementById('mp3_title').innerHTML='2Chr 21';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2021&formatting=full';">2Chr 21</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.22.973dd5192839f1b7b67ca7660b97051a.mp3';document.getElementById('mp3_title').innerHTML='2Chr 22';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2022&formatting=full';">2Chr 22</a>
+					<a href="#" onclick="document.getElementById('mp3_src').src='https://stream.biblegateway.com/bibles/32/niv-dramatized/2Chr.23.bc1902407a874ea8cfe8026816759855.mp3';document.getElementById('mp3_title').innerHTML='2Chr 23';document.getElementById('audioplayer').load(); document.getElementById('BibleContent').src='https://labs.bible.org/api/?passage=2Chr%2023&formatting=full';">2Chr 23</a></td></tr>
 			<tr>
 				<td class="date">30 Jun</td>
 				<td>
@@ -293,6 +295,7 @@
 
 	<div id="footer">
 		<a href="https://www.biblegateway.com/reading-plans/chronological/readings/2020/06?version=NIV" target="_new">Reading Plan</span>
+		<a href="https://www.biblegateway.com/audio/dramatized/niv/Ps.150" target="_new">Audio</span>
 		<a href="https://www.logos.com/bible-book-abbreviations" target="_new">Abbreviations</span>
 	</div>
 
@@ -300,6 +303,7 @@
   <script src="js/main.js"></script>
 
 	<script>
+		function toggleiframe() {var x = document.getElementById("BibleContent");if (x.style.display === "none") {x.style.display = "block";}else {x.style.display = "none";}} 
 		function toggleJune() {var x = document.getElementById("June");if (x.style.display === "none") {x.style.display = "block";}else {x.style.display = "none";}} 
 		function showBible() {var chap = document.getElementById("mp3_title").innerHTML; document.getElementById("BibleContent").src='https://labs.bible.org/api/?passage='+chap+'&formatting=full'; /*var x = document.getElementById("BibleContent");if (x.style.display === "none") {x.style.display = "block";}else {x.style.display = "none";}*/}
 	</script>
