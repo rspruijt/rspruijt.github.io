@@ -23,17 +23,21 @@
   
   <style>
 	* {margin:auto;}
-	body {font-family:sans-serif; margin-top:150px;}
+	body {font-family:sans-serif; margin-top:130px;}
 	
-	#header {position:fixed; left:0px; top:0px; background:#e7a61a; height:150px; width:100%; text-align:center; box-shadow: 0 3px 5px 0 #888;}
-	#audioplayer {border-radius: 16px; opacity:0.8; -webkit-border-radius: 40px;}
+	#header {position:fixed; left:0px; top:0px; background:#e5892d; height:130px; width:100%; text-align:center; box-shadow: 0 3px 5px 0 #888;}
+	#audioplayer {border-radius: 16px; opacity:0.8; -webkit-border-radius: 40px; margin-bottom:8px}
+	
+	iframe {border:0; background:powderblue; display:block; height:40vh; width:100%;}
 	
 	h2 {text-align:center; background:dodgerblue; color:powderblue; border-radius: 16px; padding:0.3em 0; cursor:pointer}
-	table {min-width:500px;border-collapse: collapse; margin-top:10px}
+	
+	table {border-collapse: collapse; margin-top:10px}
+	tbody tr:nth-child(odd) {background-color: #eee; color: #000;}
 	td { padding:5px}
 	.month {padding-bottom:5em;text-align:left}
 	.date {color:midnightblue; font-weight:bold; width:80px; text-align:center}
-	tbody tr:nth-child(odd) {background-color: #eee; color: #000;}
+	
 	a,span {color:dodgerblue; font-weight:bold; text-decoration:underline; cursor:pointer}
 	
 	#footer {display: flex; position:fixed; left:0px; bottom:0px; height:3em; width:100%; background:#333; font-size:0.8em; align-items:center; box-shadow: inset 0 5px 5px 0 #222;}
@@ -65,7 +69,7 @@
 
 	@media all and (min-width: 480px) and (max-width: 768px) {
 		body,p {Font-Size: 13px; Line-Height: 21px; }
-		h1 {Font-Size: 2.1em}
+		h1 {Font-Size: 2em}
 		#audioplayer {transform: scale(1); width:60%;}
 		a {Font-Size: 1em; Line-Height: 1.4em; max-width:415px; margin:auto}
 		h2 {width:50%;}
@@ -73,9 +77,9 @@
 
 	@media all and (max-width: 480px) {
 		body,p {Font-Size: 13px; Line-Height: 21px;}
-		h1 {Font-Size: 2.1em}
-		#audioplayer {transform: scale(1); width:70%;}
-		a {Font-Size: 0.9em; Line-Height: 1.1em; max-width:415px; margin:auto}
+		h1 {Font-Size: 2em}
+		#audioplayer {transform: scale(1); width:90%;}
+		a {Font-Size: 0.9em; Line-Height: 1.1em; margin:auto}
 		h2 {width:90%;}
 	}
   </style>
@@ -86,6 +90,13 @@
   <!-- Add your site or application content here -->
 
 	<div id="header">
+		<h1 id="mp3_title" onclick="showBible()">Psa 150</h1>
+		
+		<audio id="audioplayer" controls>
+			<source id="mp3_src" src="https://stream.biblegateway.com/bibles/32/niv-dramatized/Ps.150.ea7fee77d12c5a6a7d5171e07b2f3579.mp3" type="audio/mp3">
+			Your browser does not support the audio element.
+		</audio>
+		
 		<script>
 			var today = new Date();
 			var dd = String(today.getDate()).padStart(2, '0');
@@ -105,17 +116,15 @@
 			
 			today = n + ' ' + dd + '/' + mm + '/' + yyyy;
 			document.write('<p>' + today + '</p>');
+			
+			
+			var w=window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+			var h=window.innerHeight || document.documentElement.clientHeight ||document.body.clientHeight;
+			document.write('<div style="background:yellow; position:absolute; top:0; left:0"; z-index:10>' + w + ' by ' + h + '</div>');
 		</script>
-		
-		<h1 id="mp3_title" onclick="showBible()">Psa 150</h1>
-		
-		<audio id="audioplayer" controls>
-			<source id="mp3_src" src="https://stream.biblegateway.com/bibles/32/niv-dramatized/Ps.150.ea7fee77d12c5a6a7d5171e07b2f3579.mp3" type="audio/mp3">
-			Your browser does not support the audio element.
-		</audio>
 	</div>
   
-	<iframe id="BibleContent" src="https://labs.bible.org/api/?passage=Psa%20150&formatting=full" style="border:0; background:powderblue; display:block; height:40vh; width:100%;"></iframe>
+	<iframe id="BibleContent" src="https://labs.bible.org/api/?passage=Psa%20150&formatting=full"></iframe>
 	
 	<div style="height:1.5em"></div>
 
