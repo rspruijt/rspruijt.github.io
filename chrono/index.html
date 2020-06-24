@@ -26,11 +26,13 @@
 		body {font-family:sans-serif; margin-top:130px;}
 
 		#header {position:fixed; left:0px; top:0px; background:#e5a21b; height:130px; width:100%; text-align:center; box-shadow: 0 3px 5px 0 #888;}
-		#audioplayer {border-radius: 16px; opacity:0.8; -webkit-border-radius: 40px; margin-bottom:8px}
+		#audioplayer {border-radius: 16px; opacity:0.8; -webkit-border-radius: 40px; margin-bottom:8px; display:table}
+		#extracontrols span {text-decoration:none; color:black; }
+		#header p {display:inline}
 
 		iframe {border:0; background:powderblue; display:block; height:40vh; width:100%;}
 
-		h2 {text-align:center; background:dodgerblue; color:powderblue; border-radius: 16px; padding:0.3em 0; cursor:pointer}
+		h2 {text-align:center; background:dodgerblue; color:powderblue; border-radius: 16px; padding:0.3em 0; cursor:pointer; width:70%}
 
 		table {border-collapse: collapse; margin-top:10px}
 		tbody tr:nth-child(odd) {background-color: #eee; color: #000;}
@@ -47,22 +49,23 @@
 	}
 
 	@media all and (min-width: 1240px) {
-		body,p {Font-Size: 16px; Line-Height: 26px;}
-		h1 {Font-Size: 2.1em; padding-bottom:0.7em;}
-		#audioplayer {transform: scale(2); margin-bottom:1em;}
-		#header {height:220px}
+		body {Font-Size: 16px; Line-Height: 26px; margin-top:100px;}
+		#header {height:100px}
+		h1 {Font-Size: 2.1em; float:left; margin-left:2em; margin-top:1em}
+		#audioplayer {transform: scale(1); width:60%; margin-top:1em}
+		iframe {width:30%}
 		table.month {margin-top:70px}
-		h2 {margin-top:60px; width:30%;}
 	}
 
 	@media all and (min-width: 769px) and (max-width: 1240px) {
-		body,p {Font-Size: 16px; Line-Height: 26px; }
-		h1 {Font-Size: 2.1em;}
-		#audioplayer {transform: scale(1.5);}
-		#header {height:180px}
-		a {Font-Size: 1.1em; Line-Height: 1.3em; max-width:415px; margin:auto}
+		body {Font-Size: 16px; Line-Height: 26px; margin-top:100px}
+		#header {height:100px}
+		h1 {Font-Size: 2em; float:left; margin-left:2em; margin-top:1em}
+		#audioplayer {transform: scale(1); width:60%; margin-top:1em}
+		iframe {width:70%}
 		table.month {margin-top:30px}
-		h2 {margin-top:30px; width:30%;}
+		a {Font-Size: 1.1em; Line-Height: 1.3em; max-width:415px; margin:auto}
+		
 	}
 
 	@media all and (min-width: 480px) and (max-width: 768px) {
@@ -72,32 +75,41 @@
 		#audioplayer {transform: scale(1); width:60%; margin-top:1em}
 		iframe {heigth:30vh}
 		a {Font-Size: 1em; Line-Height: 1.4em; max-width:415px; margin:auto}
-		h2 {width:70%;}
 	}
 
 	@media all and (max-width: 480px) {
 		body,p {Font-Size: 13px; Line-Height: 21px;}
 		h1 {Font-Size: 2em; line-height:0.6em}
 		#audioplayer {transform: scale(1); width:90%;}
-		a {Font-Size: 0.9em; Line-Height: 1.1em; margin:auto}
 		h2 {width:90%;}
+		a {Font-Size: 0.9em; Line-Height: 1.1em; margin:auto}
 	}
   </style>
 </head>
 
 <body>
 	
-	<div style="background:powderblue; position:absolute; top:10px; right:20px; height:20px; width:20px; z-index:10; box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);" onclick="toggleiframe()"></div>
+	
 	
   <!-- Add your site or application content here -->
 
 	<div id="header">
+	
+		<div id="iframetog" style="background:powderblue; position:absolute; top:10px; right:20px; height:20px; width:20px; border-radius: 7px; font-weight:bold; vertical-align:middle; line-height:1.6em;  font-size:1em; text-align:center;z-index:10; box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);" onclick="toggleiframe()">&Tau;</div>
+		
 		<h1 id="mp3_title" onclick="showBible()" style="text-shadow:1px 1px 3px black; color:white">Psa 150</h1>
 		
 		<audio id="audioplayer" controls>
 			<source id="mp3_src" src="https://stream.biblegateway.com/bibles/32/niv-dramatized/Ps.150.ea7fee77d12c5a6a7d5171e07b2f3579.mp3" type="audio/mp3">
 			Your browser does not support the audio element.
 		</audio>
+		
+		<div id="extracontrols" style="background:yellow; display:inline; padding:0px 4px 1px 10px; border-radius: 7px; margin-right:1.5em; opacity:0.8; font-size:1.5em; text-align:center; z-index:10; box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);" >
+		
+			<span id="normspeed" onclick="speedNorm()">&omicron;&nbsp;</span>
+			<span id="speedup" onclick="speedUp()">&raquo;</span>
+		
+		</div>
 		
 		<script>
 			var today = new Date();
@@ -126,7 +138,9 @@
 		</script>
 	</div>
   
-	<iframe id="BibleContent" src="https://labs.bible.org/api/?passage=Psa%20150&formatting=full"></iframe>
+	<div style="background:powderblue; width:100%">
+		<iframe id="BibleContent" src="https://labs.bible.org/api/?passage=Psa%20150&formatting=full"></iframe>
+	</div>
 	
 	<div style="height:1.5em"></div>
 
@@ -304,6 +318,8 @@
 
 	<script>
 		function toggleiframe() {var x = document.getElementById("BibleContent");if (x.style.display === "none") {x.style.display = "block";}else {x.style.display = "none";}} 
+		function speedNorm() {var x = document.getElementById("audioplayer");x.playbackRate = 1; } 
+		function speedUp() {var x = document.getElementById("audioplayer");x.playbackRate += 0.25; } 
 		function toggleJune() {var x = document.getElementById("June");if (x.style.display === "none") {x.style.display = "block";}else {x.style.display = "none";}} 
 		function showBible() {var chap = document.getElementById("mp3_title").innerHTML; document.getElementById("BibleContent").src='https://labs.bible.org/api/?passage='+chap+'&formatting=full'; /*var x = document.getElementById("BibleContent");if (x.style.display === "none") {x.style.display = "block";}else {x.style.display = "none";}*/}
 	</script>
