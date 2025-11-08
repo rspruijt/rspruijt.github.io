@@ -30,7 +30,9 @@
 		#extracontrols span {text-decoration:none; color:white; }
 		#header p {display:inline}
 
-		iframe {border:0; background:powderblue; display:block; height:40vh; width:100%;}
+		<!--iframe {border:0; background:powderblue; display:block; height:40vh; width:100%;}-->
+		#bible-content {padding:10px; height:30vh; overflow:scroll; font-family: "Times New Roman", Times, Georgia, serif;}
+		#bible-content * {font-size:1.2rem; line-height:1.7rem}
 
 		h2 {text-align:center; background:dodgerblue; color:powderblue; border-radius: 16px; padding:0.3em 0; cursor:pointer; width:70%}
 
@@ -178,7 +180,7 @@
 		  })
 		  .catch(err => console.error('Error fetching Bible passage:', err));
 		  </script>
-		<div id="bible-content" style="padding:10px; height:30vh; overflow:scroll"></div>
+		<div id="bible-content" style=""></div>
 	</div>
 	
 	<div style="height:1.5em"></div>
